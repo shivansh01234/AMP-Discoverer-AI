@@ -8,10 +8,6 @@ from collections import Counter
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 import os
 
-def get_kmers(sequence, k=3):
-    # ... some logic here ...
-    return [sequence[i:i+k] for i in range(len(sequence) - k + 1)]
-
 # --- 1. PAGE CONFIGURATION & STYLING ---
 st.set_page_config(page_title="AMP AI | Shivansh Sahu", layout="wide", page_icon="🧬")
 
@@ -27,11 +23,17 @@ st.markdown("""
 # --- 2. LOAD AI MODELS ---
 @st.cache_resource
 def load_models():
-    model_path = os.path.join(os.path.dirname(__file__), "V2_Preprocessor.pkl")
-    preprocessor = joblib.load(model_path)
-    model = joblib.load("AMP_Stacking_Model.pkl")
+    # Get the directory where app.py is located
+    base_path = os.path.dirname(__file__)
+    
+    # Use absolute paths for both files
+    preprocessor_path = os.path.join(base_path, "V2_Preprocessor.pkl")
+    model_path = os.path.join(base_path, "AMP_Stacking_Model.pkl")
+    
+    preprocessor = joblib.load(preprocessor_path)
+    model = joblib.load(model_path)
     return preprocessor, model
-
+    
 preprocessor, model = load_models()
 
 # --- 3. BIOLOGICAL EXTRACTION ENGINE ---

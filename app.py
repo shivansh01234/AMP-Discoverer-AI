@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from collections import Counter
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
+import os
 
 # --- 1. PAGE CONFIGURATION & STYLING ---
 st.set_page_config(page_title="AMP AI | Shivansh Sahu", layout="wide", page_icon="🧬")
@@ -22,7 +23,8 @@ st.markdown("""
 # --- 2. LOAD AI MODELS ---
 @st.cache_resource
 def load_models():
-    preprocessor = joblib.load("V2_Preprocessor.pkl")
+    model_path = os.path.join(os.path.dirname(__file__), "V2_Preprocessor.pkl")
+    preprocessor = joblib.load(model_path)
     model = joblib.load("AMP_Stacking_Model.pkl")
     return preprocessor, model
 

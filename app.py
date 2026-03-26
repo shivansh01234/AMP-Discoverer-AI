@@ -8,6 +8,10 @@ from collections import Counter
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 import os
 
+def get_kmers(sequence, k=3):
+    # ... some logic here ...
+    return [sequence[i:i+k] for i in range(len(sequence) - k + 1)]
+
 # --- 1. PAGE CONFIGURATION & STYLING ---
 st.set_page_config(page_title="AMP AI | Shivansh Sahu", layout="wide", page_icon="🧬")
 

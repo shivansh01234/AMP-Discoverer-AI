@@ -73,10 +73,10 @@ target_bug = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 # Quick Load Example Sequences
-example_seq = st.sidebar.selectbox("Load Example Sequence:", ["Custom", "GIGKFLHSAKK (Known AMP)", "AAAAA (Harmless Peptide)"])
+example_seq = st.sidebar.selectbox("Load Example Sequence:", ["Custom", "ILPWKWPWWPWRR (Known AMP)", "AAAAA (Harmless Peptide)"])
 
 default_text = ""
-if example_seq == "GIGKFLHSAKK (Known AMP)": default_text = "GIGKFLHSAKK"
+if example_seq == "ILPWKWPWWPWRR (Known AMP)": default_text = "ILPWKWPWWPWRR"
 elif example_seq == "AAAAA (Harmless Peptide)": default_text = "AAAAA"
 
 user_sequence = st.sidebar.text_area("🧬 Enter Amino Acid Sequence:", value=default_text, height=150).upper()
